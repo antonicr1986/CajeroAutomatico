@@ -17,7 +17,7 @@ namespace CajeroAutomatico
 
         public float ConsultaSaldo(string identificacion)
         {
-            string query = "SELECT saldo from CuentaCorriente Where identificacion = @identificacion";
+            string query = "SELECT saldo from Cajero_CuentaCorriente Where identificacion = @identificacion";
 
             try
             {
@@ -53,7 +53,7 @@ namespace CajeroAutomatico
 
         public long ConsultaNumCuenta (string identificacion)
         {
-            string query = "SELECT numCuenta from CuentaCorriente Where identificacion = @identificacion";
+            string query = "SELECT numCuenta from Cajero_CuentaCorriente Where identificacion = @identificacion";
 
             try
             {
@@ -85,7 +85,7 @@ namespace CajeroAutomatico
 
         public void RetirarSaldo(float cantidad, string identificacion)
         {
-            string query = "UPDATE CuentaCorriente set saldo = saldo - @Cantidad WHERE identificacion = @identificacion ";
+            string query = "UPDATE Cajero_CuentaCorriente set saldo = saldo - @Cantidad WHERE identificacion = @identificacion ";
             try
             {
                 objetoConexion = new Conexion();
@@ -112,7 +112,7 @@ namespace CajeroAutomatico
 
         public void IngresarSaldo(float cantidad, string identificacion)
         {
-            string query = "UPDATE CuentaCorriente set saldo = saldo + @Cantidad WHERE identificacion = @identificacion ";
+            string query = "UPDATE Cajero_CuentaCorriente set saldo = saldo + @Cantidad WHERE identificacion = @identificacion ";
             try
             {
                 objetoConexion = new Conexion();

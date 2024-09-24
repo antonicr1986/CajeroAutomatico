@@ -41,8 +41,8 @@ namespace CajeroAutomatico
 
             //Aplicar cambios en la BD
 
-            string query = "UPDATE CuentasClientes SET Pin = @Pin WHERE Identificacion = @Identificacion";
-            string query2 = "UPDATE CuentaCorriente SET pin = @Pin WHERE identificacion = @Identificacion";
+            string query = "UPDATE Cajero_CuentasClientes SET Pin = @Pin WHERE Identificacion = @Identificacion";
+            string query2 = "UPDATE Cajero_CuentaCorriente SET pin = @Pin WHERE identificacion = @Identificacion";
 
             Conexion objetoConexion = new Conexion();
             using (SqlConnection conexion = objetoConexion.getConexion())

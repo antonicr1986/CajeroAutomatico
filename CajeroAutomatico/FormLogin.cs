@@ -67,7 +67,7 @@ namespace CajeroAutomatico
                 using (SqlConnection conexion = objetoConexion.getConexion())
                 {
                     // *** A2: Verificar usuario en la base de datos
-                    string query = "SELECT COUNT(*) FROM CuentasClientes WHERE Identificacion = @identificacion AND Pin = @pin";
+                    string query = "SELECT COUNT(*) FROM Cajero_CuentasClientes WHERE Identificacion = @identificacion AND Pin = @pin";
                     SqlCommand comando = new SqlCommand(query, conexion);
                     comando.Parameters.AddWithValue("@identificacion", numeroIdentificacionIngresado);
                     comando.Parameters.AddWithValue("@pin", pinIngresado);
@@ -118,7 +118,7 @@ namespace CajeroAutomatico
 
         public void comprobarCuentaUsuarioBD(SqlConnection conexion, CuentaCorriente cuenta, int pin)
         {
-            string query = "SELECT saldo, numCuenta, usuario, pin, identificacion FROM CuentaCorriente WHERE pin = @Pin";
+            string query = "SELECT saldo, numCuenta, usuario, pin, identificacion FROM Cajero_CuentaCorriente WHERE pin = @Pin";
 
             try
             {

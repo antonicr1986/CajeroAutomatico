@@ -1,0 +1,133 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|c:\\users\\anton\\onedrive\\escritorio\\git julio\\cajeroautomatico\\cajeroautomatico\\formretirar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|solutionrelative:cajeroautomatico\\formretirar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\cajeroautomatico\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|solutionrelative:cajeroautomatico\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\cajeroautomatico\\formcajero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|solutionrelative:cajeroautomatico\\formcajero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\cajeroautomatico\\retiro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|solutionrelative:cajeroautomatico\\retiro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\cajeroautomatico\\formingresar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|solutionrelative:cajeroautomatico\\formingresar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\cajeroautomatico\\cuentacorriente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|solutionrelative:cajeroautomatico\\cuentacorriente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\cajeroautomatico\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|solutionrelative:cajeroautomatico\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 929,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormLogin.cs",
+              "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\FormLogin.cs",
+              "RelativeDocumentMoniker": "CajeroAutomatico\\FormLogin.cs",
+              "ToolTip": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\FormLogin.cs",
+              "RelativeToolTip": "CajeroAutomatico\\FormLogin.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADYAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2024-09-20T22:35:15.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormCajero.cs",
+              "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\FormCajero.cs",
+              "RelativeDocumentMoniker": "CajeroAutomatico\\FormCajero.cs",
+              "ToolTip": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\FormCajero.cs",
+              "RelativeToolTip": "CajeroAutomatico\\FormCajero.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEUAAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2024-09-20T22:35:15.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormRetirar.cs",
+              "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\FormRetirar.cs",
+              "RelativeDocumentMoniker": "CajeroAutomatico\\FormRetirar.cs",
+              "ToolTip": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\FormRetirar.cs",
+              "RelativeToolTip": "CajeroAutomatico\\FormRetirar.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T22:35:16.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FormIngresar.cs",
+              "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\FormIngresar.cs",
+              "RelativeDocumentMoniker": "CajeroAutomatico\\FormIngresar.cs",
+              "ToolTip": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\FormIngresar.cs",
+              "RelativeToolTip": "CajeroAutomatico\\FormIngresar.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACMAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2024-09-20T22:35:16.525Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Retiro.cs",
+              "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\Retiro.cs",
+              "RelativeDocumentMoniker": "CajeroAutomatico\\Retiro.cs",
+              "ToolTip": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\Retiro.cs",
+              "RelativeToolTip": "CajeroAutomatico\\Retiro.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T22:35:16.525Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\Usuario.cs",
+              "RelativeDocumentMoniker": "CajeroAutomatico\\Usuario.cs",
+              "ToolTip": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\Usuario.cs",
+              "RelativeToolTip": "CajeroAutomatico\\Usuario.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T22:35:16.525Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CuentaCorriente.cs",
+              "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\CuentaCorriente.cs",
+              "RelativeDocumentMoniker": "CajeroAutomatico\\CuentaCorriente.cs",
+              "ToolTip": "C:\\Users\\anton\\OneDrive\\Escritorio\\Git julio\\CajeroAutomatico\\CajeroAutomatico\\CuentaCorriente.cs",
+              "RelativeToolTip": "CajeroAutomatico\\CuentaCorriente.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACwAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T22:35:16.528Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
