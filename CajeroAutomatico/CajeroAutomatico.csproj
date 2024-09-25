@@ -65,7 +65,6 @@
     <Compile Include="Cajero_CuentasClientes.cs">
       <DependentUpon>ModelEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="Conexion.cs" />
     <Compile Include="CuentaCorriente.cs" />
     <Compile Include="FormCambioPIN.cs">
       <SubType>Form</SubType>

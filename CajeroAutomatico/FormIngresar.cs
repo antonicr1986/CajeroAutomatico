@@ -62,7 +62,6 @@ namespace CajeroAutomatico
 
         private void TextBoxIngresar_TextChanged(object sender, EventArgs e)
         {
-            // Reemplazar todos los puntos por comas en el texto del TextBox
             textBoxIngresar.Text = textBoxIngresar.Text.Replace('.', ',');
 
             // Establecer la posición del cursor al final del texto

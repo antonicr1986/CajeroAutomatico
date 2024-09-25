@@ -8,9 +8,9 @@ namespace CajeroAutomatico
 {
     public class Usuario
     {
-        public string Nombre { get;set; }
-        public string Identificacion { get; set; }
-        public int PIN { get; set; }
+        private string Nombre { get;set; }
+        private string Identificacion { get; set; }
+        private int PIN { get; set; }
 
         public Usuario(string nombre, string identificacion, int pin)
         {

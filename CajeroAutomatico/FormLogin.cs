@@ -14,14 +14,11 @@ namespace CajeroAutomatico
 {
     public partial class FormLogin : Form
     {
-        public Usuario Usuario {get;set;}
+        private Usuario Usuario {get;set;}
         private string[] CuentaTransferencias = new string[5];
         private int CuentaContador = 0;
 
-
-        public Retiro Retiro { get; set; }
-
-        Conexion objetoConexion = new Conexion();
+        private Retiro Retiro { get; set; }
 
         public FormLogin()
         {
@@ -64,7 +61,7 @@ namespace CajeroAutomatico
                 }
 
                 // *** A2: Verificar usuario en la base de datos usando Entity Framework
-                using (var context = new DBonlineEF()) 
+                using (var context = new DBonlineEF())
                 {
                     // Verificar si existe el usuario con la identificación y PIN ingresados
                     var cuentaCliente = context.Cajero_CuentasClientes
@@ -76,17 +73,11 @@ namespace CajeroAutomatico
                         this.Hide();
 
                         // Cargar la cuenta corriente usando el PIN
-                        CuentaCorriente cuenta = new CuentaCorriente();
-                        ComprobarCuentaUsuarioBD(pinIngresado); 
+                        BdDML.ComprobarCuentaUsuarioBD(pinIngresado);
 
                         /* FormCajero cajero1 = new FormCajero(Usuario, cuenta, Retiro); */
                         FormCajero cajero1 = new FormCajero(numeroIdentificacionIngresado, Retiro, CuentaTransferencias, CuentaContador);
                         cajero1.Show();
-
-                        MessageBox.Show("Comprobando usuario" +
-                            "\nIdentificación usuario = " + cuenta.Identificacion +
-                            "\nCuenta = " + cuenta +
-                            "\nRetiro = " + Retiro);
                     }
                     else
                     {
@@ -95,7 +86,7 @@ namespace CajeroAutomatico
                     }
                 }
             }
-            catch(FormatException ex)
+            catch (FormatException ex)
             {
                 MessageBox.Show("El numero de tarjeta o el PIN tienen un formato incorrecto: " + ex.Message);
             }
@@ -104,37 +95,7 @@ namespace CajeroAutomatico
                 MessageBox.Show("Se produjo un error: " + ex.Message);
             }
         }
-
-        public void ComprobarCuentaUsuarioBD(int pin)
-        {
-            try
-            {
-                using (var context = new DBonlineEF())
-                { 
-                    // Buscar la cuenta que coincide con el Pin
-                    var cuentaCorriente = context.Cajero_CuentaCorriente
-                                                 .FirstOrDefault(c => c.pin == pin);
-
-                    if (cuentaCorriente != null)
-                    {
-                        // Aquí ya tienes los datos en la propiedad de cuentaCorriente
-                        MessageBox.Show("Coprobando cuentacorriente" +
-                            "\nSaldo: " + cuentaCorriente.saldo +
-                            "\nIdentificación usuario: " + cuentaCorriente.identificacion +
-                            "\nPIN: " + cuentaCorriente.pin +
-                            "\nNumCuenta: " + cuentaCorriente.numCuenta);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se encontró la cuenta.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
+        
 
         private void TextBoxPIN_KeyPress(object sender, KeyPressEventArgs e)
         {

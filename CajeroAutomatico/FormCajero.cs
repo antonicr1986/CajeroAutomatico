@@ -25,7 +25,6 @@ namespace CajeroAutomatico
         private string[] Transferencias = new string[5];
 
         private Retiro Retiro;
-        public Conexion objetoConexion;
 
         public FormCajero(string identificacion, Retiro retiro, string[] cuentaTransferencias, int cuentaContador)
         {
@@ -76,7 +75,7 @@ namespace CajeroAutomatico
         }
 
         private void ButtonTransferencias_Click(object sender, EventArgs e)
-        {
+        {//TODO Comprobar porque no me carga bien las 5 transferencias
             try
             {
                 if (!string.IsNullOrWhiteSpace(Transferencias[0]))
@@ -106,45 +105,5 @@ namespace CajeroAutomatico
             FormCambioPIN formPIN = new FormCambioPIN(CuentaIdentificacion);
             formPIN.ShowDialog();
         }
-
-        //PENDIENTE DE BORRAR METODO
-        /*public void ConsultarCuentaCorriente()
-        {
-            try
-            {
-                using (var context = new DBonlineEF())
-                {
-                    // Realizar la consulta utilizando LINQ
-                    var cuenta = context.Cajero_CuentaCorriente
-                                        .Where(c => c.identificacion == CuentaIdentificacion)
-                                        .Select(c => new
-                                        {
-                                            c.saldo,
-                                            c.numCuenta,
-                                            c.usuario,
-                                            c.pin
-                                        })
-                                        .FirstOrDefault();
-
-                    if (cuenta != null)
-                    {
-                        double saldo = (double)cuenta.saldo;
-                        long numCuenta = cuenta.numCuenta;
-                        string usuario = cuenta.usuario;
-                        int pin = cuenta.pin;
-
-                        // Aquí puedes usar los datos leídos
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se encontró la cuenta.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }*/
     }
 }

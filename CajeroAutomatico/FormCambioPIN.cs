@@ -13,8 +13,10 @@ using System.Windows.Forms;
 namespace CajeroAutomatico
 {
     public partial class FormCambioPIN : Form
-    {
+    { 
         public string IdentificacionUsuario;
+
+        BdDML bdDMl = new BdDML();
 
         public FormCambioPIN(string identificacion)
         {
@@ -38,47 +40,9 @@ namespace CajeroAutomatico
             }
 
             nuevoPin = textBoxNuevoPIN.Text;
+
+            bdDMl.CambioPin(nuevoPin, IdentificacionUsuario);
            
-
-            try
-            {
-                using (var context = new DBonlineEF())
-                {
-                    // Actualiza el PIN en Cajero_CuentasClientes
-                    var cuentaCliente = context.Cajero_CuentasClientes
-                                               .FirstOrDefault(c => c.Identificacion == IdentificacionUsuario);
-                    if (cuentaCliente != null)
-                    {
-                        cuentaCliente.Pin = int.Parse(nuevoPin);
-                        context.SaveChanges();
-                        MessageBox.Show("PIN actualizado en Cajero_CuentasClientes.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se encontró la cuenta del cliente.");
-                    }
-
-                    // Actualiza el PIN en Cajero_CuentaCorriente
-                    var cuentaCorriente = context.Cajero_CuentaCorriente
-                                                 .FirstOrDefault(c => c.identificacion == IdentificacionUsuario);
-                    if (cuentaCorriente != null)
-                    {
-                        cuentaCorriente.pin = int.Parse(nuevoPin);
-                        context.SaveChanges();
-                        MessageBox.Show("PIN actualizado en Cajero_CuentaCorriente.");
-                        MessageBox.Show("El nuevo PIN es: " + nuevoPin);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se encontró la cuenta corriente.");
-                    }
-                }
-            }
-            
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al actualizar la base de datos: " + ex.Message);
-            }
         }
 
         private void CheckBoxVerPIN_CheckedChanged(object sender, EventArgs e)

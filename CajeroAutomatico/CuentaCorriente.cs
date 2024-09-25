@@ -26,7 +26,6 @@ namespace CajeroAutomatico
 
         public CuentaCorriente()
         {
-
         }
 
         public double ConsultarSaldo()
