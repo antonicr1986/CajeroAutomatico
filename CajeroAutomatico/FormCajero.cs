@@ -108,7 +108,7 @@ namespace CajeroAutomatico
 
         public void consultarCuentaCorriente()
         {
-            string query = "SELECT saldo, numCuenta, usuario, pin FROM CuentaCorriente WHERE Identificacion =@Identificacion)";
+            string query = "SELECT saldo, numCuenta, usuario, pin FROM Cajero_CuentaCorriente WHERE Identificacion =@Identificacion)";
 
             try
             {
