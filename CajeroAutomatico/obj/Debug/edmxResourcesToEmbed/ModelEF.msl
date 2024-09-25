@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBonlineAntonioModelStoreContainer" CdmEntityContainer="DBonlineEF">
+    <EntitySetMapping Name="Cajero_CuentaCorriente">
+      <EntityTypeMapping TypeName="DBonlineAntonioModel.Cajero_CuentaCorriente">
+        <MappingFragment StoreEntitySet="Cajero_CuentaCorriente">
+          <ScalarProperty Name="saldo" ColumnName="saldo" />
+          <ScalarProperty Name="numCuenta" ColumnName="numCuenta" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="pin" ColumnName="pin" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cajero_CuentasClientes">
+      <EntityTypeMapping TypeName="DBonlineAntonioModel.Cajero_CuentasClientes">
+        <MappingFragment StoreEntitySet="Cajero_CuentasClientes">
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="Pin" ColumnName="Pin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

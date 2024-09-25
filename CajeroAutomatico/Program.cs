@@ -16,10 +16,7 @@ namespace CajeroAutomatico
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            //Version con usuarios cojidos de BD
-            FormLogin formLogin2 = new FormLogin();
-            
+            FormLogin formLogin2 = new FormLogin();      
             Application.Run(formLogin2);
 
         }

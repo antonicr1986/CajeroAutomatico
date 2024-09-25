@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -62,35 +63,29 @@ namespace CajeroAutomatico
                     return;
                 }
 
-                //***A1 Conectar con BD
-                objetoConexion = new Conexion();
-                using (SqlConnection conexion = objetoConexion.getConexion())
+                // *** A2: Verificar usuario en la base de datos usando Entity Framework
+                using (var context = new DBonlineEF()) 
                 {
-                    // *** A2: Verificar usuario en la base de datos
-                    string query = "SELECT COUNT(*) FROM Cajero_CuentasClientes WHERE Identificacion = @identificacion AND Pin = @pin";
-                    SqlCommand comando = new SqlCommand(query, conexion);
-                    comando.Parameters.AddWithValue("@identificacion", numeroIdentificacionIngresado);
-                    comando.Parameters.AddWithValue("@pin", pinIngresado);
+                    // Verificar si existe el usuario con la identificación y PIN ingresados
+                    var cuentaCliente = context.Cajero_CuentasClientes
+                                               .FirstOrDefault(c => c.Identificacion == numeroIdentificacionIngresado && c.Pin == pinIngresado);
 
-                    int count = (int)comando.ExecuteScalar(); // Retorna el número de coincidencias
-
-                    if (count > 0)
+                    if (cuentaCliente != null)
                     {
                         // Usuario y PIN son correctos
                         this.Hide();
 
+                        // Cargar la cuenta corriente usando el PIN
                         CuentaCorriente cuenta = new CuentaCorriente();
+                        ComprobarCuentaUsuarioBD(pinIngresado); 
 
-                        comprobarCuentaUsuarioBD(conexion, cuenta, pinIngresado);
-                       
-
-                        /*FormCajero cajero1 = new FormCajero(Usuario, cuenta, Retiro);*/
-                        FormCajero cajero1 = new FormCajero(numeroIdentificacionIngresado, Retiro, CuentaTransferencias,CuentaContador);
+                        /* FormCajero cajero1 = new FormCajero(Usuario, cuenta, Retiro); */
+                        FormCajero cajero1 = new FormCajero(numeroIdentificacionIngresado, Retiro, CuentaTransferencias, CuentaContador);
                         cajero1.Show();
 
-                        MessageBox.Show("Creando FormCajero"+
-                            "\nIdentificacion usuario = " + cuenta.Identificacion+
-                            "\nCuenta = " + cuenta+
+                        MessageBox.Show("Comprobando usuario" +
+                            "\nIdentificación usuario = " + cuenta.Identificacion +
+                            "\nCuenta = " + cuenta +
                             "\nRetiro = " + Retiro);
                     }
                     else
@@ -98,12 +93,6 @@ namespace CajeroAutomatico
                         // Usuario o PIN incorrectos
                         MessageBox.Show("El número de identificación o el PIN son incorrectos");
                     }
-
-                    if (conexion.State != ConnectionState.Open)
-                    {
-                        MessageBox.Show("No se pudo establecer conexión con la base de datos.");
-                        return;
-                    }             
                 }
             }
             catch(FormatException ex)
@@ -116,40 +105,30 @@ namespace CajeroAutomatico
             }
         }
 
-        public void comprobarCuentaUsuarioBD(SqlConnection conexion, CuentaCorriente cuenta, int pin)
+        public void ComprobarCuentaUsuarioBD(int pin)
         {
-            string query = "SELECT saldo, numCuenta, usuario, pin, identificacion FROM Cajero_CuentaCorriente WHERE pin = @Pin";
-
             try
             {
-                // Crear el comando SQL
-                SqlCommand command = new SqlCommand(query, conexion);
-                command.Parameters.AddWithValue("@Pin", pin);
+                using (var context = new DBonlineEF())
+                { 
+                    // Buscar la cuenta que coincide con el Pin
+                    var cuentaCorriente = context.Cajero_CuentaCorriente
+                                                 .FirstOrDefault(c => c.pin == pin);
 
-                // Ejecutar la consulta
-                SqlDataReader reader = command.ExecuteReader();
-
-                // Leer los resultados
-                if (reader != null && reader.Read())
-                {
-                    cuenta.Saldo = reader.GetDouble(reader.GetOrdinal("saldo"));
-                    cuenta.Identificacion = reader.GetString(reader.GetOrdinal("identificacion"));
-                    cuenta.PIN = reader.GetInt32(reader.GetOrdinal("pin"));
-                    cuenta.NumCuenta = reader.GetInt64(reader.GetOrdinal("numCuenta"));
-
-                    // Aquí ya tienes los datos en la propiedad de cuenta
-                    MessageBox.Show("ComprobarCuentaUsuario BD"+
-                        "\nSaldo: " + cuenta.Saldo+
-                        "\nIdentificacion usuario: " + cuenta.Identificacion+
-                        "\nPIN: " + cuenta.PIN+
-                        "\nNumCuenta: " + cuenta.NumCuenta);
+                    if (cuentaCorriente != null)
+                    {
+                        // Aquí ya tienes los datos en la propiedad de cuentaCorriente
+                        MessageBox.Show("Coprobando cuentacorriente" +
+                            "\nSaldo: " + cuentaCorriente.saldo +
+                            "\nIdentificación usuario: " + cuentaCorriente.identificacion +
+                            "\nPIN: " + cuentaCorriente.pin +
+                            "\nNumCuenta: " + cuentaCorriente.numCuenta);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró la cuenta.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("No se encontró la cuenta.");
-                }
-
-                reader.Close();
             }
             catch (Exception ex)
             {
@@ -157,7 +136,7 @@ namespace CajeroAutomatico
             }
         }
 
-        private void textBoxPIN_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxPIN_KeyPress(object sender, KeyPressEventArgs e)
         {
         if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {

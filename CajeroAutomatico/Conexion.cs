@@ -19,7 +19,7 @@ namespace CajeroAutomatico
 
         private string connectionString = "Data Source=" + servidor + "," + puerto + ";" + "User ID=" + usuario + ";" + "Password=" + password + ";" + "Initial Catalog=" + bd + ";" + "Persist Security Info=true";
 
-        public SqlConnection getConexion()
+        public SqlConnection GetConexion()
         {
             try {
                 cconex.ConnectionString = connectionString;

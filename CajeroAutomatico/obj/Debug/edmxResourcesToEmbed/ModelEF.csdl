@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBonlineAntonioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cajero_CuentaCorriente">
+    <Key>
+      <PropertyRef Name="numCuenta" />
+    </Key>
+    <Property Name="saldo" Type="Double" />
+    <Property Name="numCuenta" Type="Int64" Nullable="false" />
+    <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pin" Type="Int32" Nullable="false" />
+    <Property Name="identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Cajero_CuentasClientes" Relationship="Self.FK_Cajero_CuentaCorriente_Identificacion" FromRole="Cajero_CuentaCorriente" ToRole="Cajero_CuentasClientes" />
+  </EntityType>
+  <EntityType Name="Cajero_CuentasClientes">
+    <Key>
+      <PropertyRef Name="Identificacion" />
+    </Key>
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pin" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cajero_CuentaCorriente" Relationship="Self.FK_Cajero_CuentaCorriente_Identificacion" FromRole="Cajero_CuentasClientes" ToRole="Cajero_CuentaCorriente" />
+  </EntityType>
+  <Association Name="FK_Cajero_CuentaCorriente_Identificacion">
+    <End Role="Cajero_CuentasClientes" Type="Self.Cajero_CuentasClientes" Multiplicity="1" />
+    <End Role="Cajero_CuentaCorriente" Type="Self.Cajero_CuentaCorriente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cajero_CuentasClientes">
+        <PropertyRef Name="Identificacion" />
+      </Principal>
+      <Dependent Role="Cajero_CuentaCorriente">
+        <PropertyRef Name="identificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBonlineEF" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cajero_CuentaCorriente" EntityType="Self.Cajero_CuentaCorriente" />
+    <EntitySet Name="Cajero_CuentasClientes" EntityType="Self.Cajero_CuentasClientes" />
+    <AssociationSet Name="FK_Cajero_CuentaCorriente_Identificacion" Association="Self.FK_Cajero_CuentaCorriente_Identificacion">
+      <End Role="Cajero_CuentasClientes" EntitySet="Cajero_CuentasClientes" />
+      <End Role="Cajero_CuentaCorriente" EntitySet="Cajero_CuentaCorriente" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

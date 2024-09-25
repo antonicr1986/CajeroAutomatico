@@ -43,7 +43,7 @@
             this.textBoxNuevoPIN.PasswordChar = '*';
             this.textBoxNuevoPIN.Size = new System.Drawing.Size(100, 20);
             this.textBoxNuevoPIN.TabIndex = 0;
-            this.textBoxNuevoPIN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNuevoPIN_KeyPress);
+            this.textBoxNuevoPIN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNuevoPIN_KeyPress);
             // 
             // textBoxNuevoPINbis
             // 
@@ -52,7 +52,7 @@
             this.textBoxNuevoPINbis.PasswordChar = '*';
             this.textBoxNuevoPINbis.Size = new System.Drawing.Size(100, 20);
             this.textBoxNuevoPINbis.TabIndex = 1;
-            this.textBoxNuevoPINbis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNuevoPINbis_KeyPress);
+            this.textBoxNuevoPINbis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNuevoPINbis_KeyPress);
             // 
             // lblNuevoPIN
             // 
@@ -80,7 +80,7 @@
             this.buttonConfirmarNuevoPIN.TabIndex = 4;
             this.buttonConfirmarNuevoPIN.Text = "CONFIRMAR NUEVO PIN";
             this.buttonConfirmarNuevoPIN.UseVisualStyleBackColor = true;
-            this.buttonConfirmarNuevoPIN.Click += new System.EventHandler(this.buttonConfirmarNuevoPIN_Click);
+            this.buttonConfirmarNuevoPIN.Click += new System.EventHandler(this.ButtonConfirmarNuevoPIN_Click);
             // 
             // checkBoxVerPIN
             // 
@@ -91,7 +91,7 @@
             this.checkBoxVerPIN.TabIndex = 5;
             this.checkBoxVerPIN.Text = "Ver PIN";
             this.checkBoxVerPIN.UseVisualStyleBackColor = true;
-            this.checkBoxVerPIN.CheckedChanged += new System.EventHandler(this.checkBoxVerPIN_CheckedChanged);
+            this.checkBoxVerPIN.CheckedChanged += new System.EventHandler(this.CheckBoxVerPIN_CheckedChanged);
             // 
             // FormCambioPIN
             // 

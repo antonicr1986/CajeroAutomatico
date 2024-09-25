@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBonlineAntonioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cajero_CuentaCorriente">
+    <Key>
+      <PropertyRef Name="numCuenta" />
+    </Key>
+    <Property Name="saldo" Type="float" />
+    <Property Name="numCuenta" Type="bigint" Nullable="false" />
+    <Property Name="usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="pin" Type="int" Nullable="false" />
+    <Property Name="identificacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cajero_CuentasClientes">
+    <Key>
+      <PropertyRef Name="Identificacion" />
+    </Key>
+    <Property Name="Usuario" Type="nvarchar" MaxLength="50" />
+    <Property Name="Identificacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pin" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Cajero_CuentaCorriente_Identificacion">
+    <End Role="Cajero_CuentasClientes" Type="Self.Cajero_CuentasClientes" Multiplicity="1" />
+    <End Role="Cajero_CuentaCorriente" Type="Self.Cajero_CuentaCorriente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cajero_CuentasClientes">
+        <PropertyRef Name="Identificacion" />
+      </Principal>
+      <Dependent Role="Cajero_CuentaCorriente">
+        <PropertyRef Name="identificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBonlineAntonioModelStoreContainer">
+    <EntitySet Name="Cajero_CuentaCorriente" EntityType="Self.Cajero_CuentaCorriente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cajero_CuentasClientes" EntityType="Self.Cajero_CuentasClientes" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cajero_CuentaCorriente_Identificacion" Association="Self.FK_Cajero_CuentaCorriente_Identificacion">
+      <End Role="Cajero_CuentasClientes" EntitySet="Cajero_CuentasClientes" />
+      <End Role="Cajero_CuentaCorriente" EntitySet="Cajero_CuentaCorriente" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

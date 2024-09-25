@@ -19,5 +19,7 @@ HECHO
 AMPLICACION MAS COMPLICADA (MAS ADELANTE) V2.0
 -------------------------------------------------------------------------------------
 -Posibilidad de registrar nuevo PIN!!!!!!!!!!!!
+-Adaptada a BD online de Somme.com!!!!!
+-Ver transferencias no me muestra bien todas las ultimas 5 transferencias. Ver que pasa?????
 
 -Posibilidad de registrar  numero de telefono, un estado de cuenta detallado y un sistema rápido de retirada de efectivo (20,50, 100 € etc)

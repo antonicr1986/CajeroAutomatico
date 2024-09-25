@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -21,9 +22,9 @@ namespace CajeroAutomatico
             IdentificacionUsuario = identificacion;
         }
 
-        private void buttonConfirmarNuevoPIN_Click(object sender, EventArgs e)
+        private void ButtonConfirmarNuevoPIN_Click(object sender, EventArgs e)
         {
-            String nuevoPin;
+            string nuevoPin;
 
             if (string.IsNullOrWhiteSpace(textBoxNuevoPIN.Text) || (string.IsNullOrWhiteSpace(textBoxNuevoPINbis.Text)))
             {
@@ -37,60 +38,50 @@ namespace CajeroAutomatico
             }
 
             nuevoPin = textBoxNuevoPIN.Text;
-            MessageBox.Show("El nuevo PIN es: " + nuevoPin);
+           
 
-            //Aplicar cambios en la BD
-
-            string query = "UPDATE Cajero_CuentasClientes SET Pin = @Pin WHERE Identificacion = @Identificacion";
-            string query2 = "UPDATE Cajero_CuentaCorriente SET pin = @Pin WHERE identificacion = @Identificacion";
-
-            Conexion objetoConexion = new Conexion();
-            using (SqlConnection conexion = objetoConexion.getConexion())
+            try
             {
-                using (SqlCommand command = new SqlCommand(query, conexion))
+                using (var context = new DBonlineEF())
                 {
-                    // Agregar parámetros
-                    command.Parameters.AddWithValue("@Pin", nuevoPin);
-                    MessageBox.Show("Identificacion usuario = " + IdentificacionUsuario);
-                    command.Parameters.AddWithValue("@Identificacion", IdentificacionUsuario);
-
-                    try
+                    // Actualiza el PIN en Cajero_CuentasClientes
+                    var cuentaCliente = context.Cajero_CuentasClientes
+                                               .FirstOrDefault(c => c.Identificacion == IdentificacionUsuario);
+                    if (cuentaCliente != null)
                     {
-                        // Ejecutar la consulta
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        // Informar al usuario sobre el resultado
-                        MessageBox.Show($"{rowsAffected} fila(s) actualizada(s).");
+                        cuentaCliente.Pin = int.Parse(nuevoPin);
+                        context.SaveChanges();
+                        MessageBox.Show("PIN actualizado en Cajero_CuentasClientes.");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Error al actualizar la base de datos: " + ex.Message);
+                        MessageBox.Show("No se encontró la cuenta del cliente.");
                     }
-                }
 
-                using (SqlCommand command = new SqlCommand(query2, conexion))
-                {
-                    // Agregar parámetros
-                    command.Parameters.AddWithValue("@Pin", nuevoPin);
-                    MessageBox.Show("Identificacion usuario = " + IdentificacionUsuario);
-                    command.Parameters.AddWithValue("@Identificacion", IdentificacionUsuario);
-
-                    try
+                    // Actualiza el PIN en Cajero_CuentaCorriente
+                    var cuentaCorriente = context.Cajero_CuentaCorriente
+                                                 .FirstOrDefault(c => c.identificacion == IdentificacionUsuario);
+                    if (cuentaCorriente != null)
                     {
-                        // Ejecutar la consulta
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        MessageBox.Show($"{rowsAffected} fila(s) actualizada(s).");
+                        cuentaCorriente.pin = int.Parse(nuevoPin);
+                        context.SaveChanges();
+                        MessageBox.Show("PIN actualizado en Cajero_CuentaCorriente.");
+                        MessageBox.Show("El nuevo PIN es: " + nuevoPin);
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Error al actualizar la base de datos: " + ex.Message);
+                        MessageBox.Show("No se encontró la cuenta corriente.");
                     }
                 }
             }
+            
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar la base de datos: " + ex.Message);
+            }
         }
 
-        private void checkBoxVerPIN_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxVerPIN_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxVerPIN.Checked)
             {
@@ -109,7 +100,7 @@ namespace CajeroAutomatico
             this.Hide();
         }
 
-        private void textBoxNuevoPIN_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxNuevoPIN_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
@@ -117,7 +108,7 @@ namespace CajeroAutomatico
             }
         }
 
-        private void textBoxNuevoPINbis_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxNuevoPINbis_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {

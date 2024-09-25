@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -57,13 +58,13 @@ namespace CajeroAutomatico
         {
             CuentaSaldo = bdDMl.ConsultaSaldo(CuentaIdentificacion);
             FormIngresar ingresar = new FormIngresar(CuentaSaldo, CuentaNumCuenta, CuentaUsuario, CuentaPin, CuentaIdentificacion, CuentaContador, Transferencias);
-            ingresar.ShowDialog();  
+            ingresar.ShowDialog();
         }
 
         private void ButtonVerNumCuenta_Click(object sender, EventArgs e)
         {
             CuentaNumCuenta = bdDMl.ConsultaNumCuenta(CuentaIdentificacion);
-            MessageBox.Show("El numero de cuenta es "+ CuentaNumCuenta);
+            MessageBox.Show("El numero de cuenta es " + CuentaNumCuenta);
         }
 
         private void FormCajero_FormClosing(object sender, FormClosingEventArgs e)
@@ -87,10 +88,10 @@ namespace CajeroAutomatico
                 else
                     MessageBox.Show("No hay ninguna transferencia registrada en esta cuenta");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Excepcion: " + ex);
-            }     
+            }
         }
 
         private void ButtonCerrarSesion_Click(object sender, EventArgs e)
@@ -102,40 +103,48 @@ namespace CajeroAutomatico
 
         private void buttonCambiarPIN_Click(object sender, EventArgs e)
         {
-            FormCambioPIN formPIN= new FormCambioPIN(CuentaIdentificacion);
+            FormCambioPIN formPIN = new FormCambioPIN(CuentaIdentificacion);
             formPIN.ShowDialog();
         }
 
-        public void consultarCuentaCorriente()
+        //PENDIENTE DE BORRAR METODO
+        /*public void ConsultarCuentaCorriente()
         {
-            string query = "SELECT saldo, numCuenta, usuario, pin FROM Cajero_CuentaCorriente WHERE Identificacion =@Identificacion)";
-
             try
             {
-                objetoConexion = new Conexion();
-                using (SqlConnection conexion = objetoConexion.getConexion())
+                using (var context = new DBonlineEF())
                 {
-                    // Crear el comando SQL
-                    SqlCommand command = new SqlCommand(query, conexion);
-                    command.Parameters.AddWithValue("@identificacion", CuentaIdentificacion);
+                    // Realizar la consulta utilizando LINQ
+                    var cuenta = context.Cajero_CuentaCorriente
+                                        .Where(c => c.identificacion == CuentaIdentificacion)
+                                        .Select(c => new
+                                        {
+                                            c.saldo,
+                                            c.numCuenta,
+                                            c.usuario,
+                                            c.pin
+                                        })
+                                        .FirstOrDefault();
 
-                    // Ejecutar la consulta
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    // Leer los resultados
-                    if (reader != null && reader.Read())
+                    if (cuenta != null)
                     {
-                        float saldo = reader.GetFloat(0);
-                        long numCuenta = reader.GetInt64(1);
-                        string usuario = reader.GetString(2);
-                        int pin = reader.GetInt32(3);
+                        double saldo = (double)cuenta.saldo;
+                        long numCuenta = cuenta.numCuenta;
+                        string usuario = cuenta.usuario;
+                        int pin = cuenta.pin;
+
+                        // Aquí puedes usar los datos leídos
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró la cuenta.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex);
+                MessageBox.Show("Error: " + ex.Message);
             }
-        }
+        }*/
     }
 }

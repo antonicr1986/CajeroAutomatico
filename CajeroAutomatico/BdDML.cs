@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -17,123 +18,98 @@ namespace CajeroAutomatico
 
         public float ConsultaSaldo(string identificacion)
         {
-            string query = "SELECT saldo from Cajero_CuentaCorriente Where identificacion = @identificacion";
-
             try
             {
-                objetoConexion = new Conexion();
-                using (SqlConnection conexion = objetoConexion.getConexion())
+                using (var context = new DBonlineEF()) 
                 {
-                    // Crear el comando SQL
-                    SqlCommand command = new SqlCommand(query, conexion);
-                    command.Parameters.AddWithValue("@identificacion", identificacion);
+                    var saldo = context.Cajero_CuentaCorriente
+                                       .Where(c => c.identificacion == identificacion)
+                                       .Select(c => c.saldo)
+                                       .FirstOrDefault(); // Obtiene el primer saldo o 0 si no hay coincidencias
 
-                    // Ejecutar la consulta
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        // Leer los resultados
-                        if (reader != null && reader.Read())
-                        {
-                            if (!reader.IsDBNull(0))
-                            {
-                                saldo = Convert.ToSingle(reader.GetDouble(0));
-                            }
-                        }
-                    }           
+                    // Verifica si se encontró un saldo y conviértelo a float
+                    return saldo.HasValue ? Convert.ToSingle(saldo.Value) : 0f;
                 }
-                return saldo;
             }
-            
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex);
+                MessageBox.Show("Error: " + ex.Message);
             }
-            return 0;
+            return 0f;
         }
 
         public long ConsultaNumCuenta (string identificacion)
         {
-            string query = "SELECT numCuenta from Cajero_CuentaCorriente Where identificacion = @identificacion";
-
             try
             {
-                objetoConexion = new Conexion();
-                using (SqlConnection conexion = objetoConexion.getConexion())
+                using (var context = new DBonlineEF()) 
                 {
-                    // Crear el comando SQL
-                    SqlCommand command = new SqlCommand(query, conexion);
-                    command.Parameters.AddWithValue("@identificacion", identificacion);
+                    var numCuenta = context.Cajero_CuentaCorriente
+                                           .Where(c => c.identificacion == identificacion)
+                                           .Select(c => c.numCuenta)
+                                           .FirstOrDefault();
 
-                    // Ejecutar la consulta
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    // Leer los resultados
-                    if (reader != null && reader.Read())
-                    {
-                        numCuenta = reader.GetInt64(0);
-                    }
                     return numCuenta;
                 }
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex);
+                MessageBox.Show("Error: " + ex.Message);
             }
             return 0;
         }
 
         public void RetirarSaldo(float cantidad, string identificacion)
         {
-            string query = "UPDATE Cajero_CuentaCorriente set saldo = saldo - @Cantidad WHERE identificacion = @identificacion ";
             try
             {
-                objetoConexion = new Conexion();
-                using (SqlConnection conexion = objetoConexion.getConexion())
+                using (var context = new DBonlineEF())
                 {
-                    SqlCommand command = new SqlCommand(query, conexion);
-                    command.Parameters.AddWithValue("@identificacion", identificacion);
-                    command.Parameters.AddWithValue("@Cantidad", cantidad);
+                    var cuenta = context.Cajero_CuentaCorriente
+                                        .FirstOrDefault(c => c.identificacion == identificacion);
 
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader != null && reader.Read())
+                    if (cuenta != null)
                     {
-                        numCuenta = reader.GetInt64(0);
+                        cuenta.saldo -= cantidad;
+
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró la cuenta con la identificación proporcionada.");
                     }
                 }
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
         public void IngresarSaldo(float cantidad, string identificacion)
         {
-            string query = "UPDATE Cajero_CuentaCorriente set saldo = saldo + @Cantidad WHERE identificacion = @identificacion ";
             try
             {
-                objetoConexion = new Conexion();
-                using (SqlConnection conexion = objetoConexion.getConexion())
+                using (var context = new DBonlineEF()) 
                 {
-                    SqlCommand command = new SqlCommand(query, conexion);
-                    command.Parameters.AddWithValue("@identificacion", identificacion);
-                    command.Parameters.AddWithValue("@Cantidad", cantidad);
+                    // Busca la cuenta que coincida con la identificación
+                    var cuenta = context.Cajero_CuentaCorriente
+                                        .FirstOrDefault(c => c.identificacion == identificacion);
 
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader != null && reader.Read())
+                    if (cuenta != null)
                     {
-                        numCuenta = reader.GetInt64(0);
+                        cuenta.saldo += cantidad;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró la cuenta con la identificación proporcionada.");
                     }
                 }
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
     }

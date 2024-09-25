@@ -40,3 +40,8 @@ C:\Users\anton\OneDrive\Escritorio\Git julio\CajeroAutomatico\CajeroAutomatico\b
 C:\Users\anton\OneDrive\Escritorio\Git julio\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.FormCambioPIN.resources
 C:\Users\anton\OneDrive\Escritorio\Git julio\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.csproj.AssemblyReference.cache
 C:\Users\anton\OneDrive\Escritorio\Git julio\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.csproj.CoreCompileInputs.cache
+C:\Users\anton\OneDrive\Escritorio\Git julio\CajeroAutomatico\CajeroAutomatico\bin\Debug\EntityFramework.dll
+C:\Users\anton\OneDrive\Escritorio\Git julio\CajeroAutomatico\CajeroAutomatico\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\anton\OneDrive\Escritorio\Git julio\CajeroAutomatico\CajeroAutomatico\bin\Debug\EntityFramework.xml
+C:\Users\anton\OneDrive\Escritorio\Git julio\CajeroAutomatico\CajeroAutomatico\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\anton\OneDrive\Escritorio\Git julio\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.csproj.CopyComplete

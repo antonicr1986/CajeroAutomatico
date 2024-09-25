@@ -104,7 +104,7 @@ namespace CajeroAutomatico
             }    
         }
 
-        private void textBoxRetirar_TextChanged(object sender, EventArgs e)
+        private void TextBoxRetirar_TextChanged(object sender, EventArgs e)
         {
             // Reemplazar todos los puntos por comas en el texto del TextBox
             textBoxRetirar.Text = textBoxRetirar.Text.Replace('.', ',');
