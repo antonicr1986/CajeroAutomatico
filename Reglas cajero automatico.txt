@@ -1,5 +1,5 @@
 CAJERO ELECTRONICO V1.0
-------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
 
 HECHO
 -Verificar usuario pidiendo el PIN
@@ -16,10 +16,21 @@ HECHO
 -Conectar programa con base de datos que contenga los usuarios y las cuentas
 -Cambiados icono de formulario y ensamblado
 
-AMPLICACION MAS COMPLICADA (MAS ADELANTE) V2.0
--------------------------------------------------------------------------------------
+CAJERO ELECTRONICO V2.0
+-------------------------------------------------------------------------------------------------------------------------------------------------------
 -Posibilidad de registrar nuevo PIN!!!!!!!!!!!!
 -Adaptada a BD online de Somme.com!!!!!
--Ver transferencias no me muestra bien todas las ultimas 5 transferencias. Ver que pasa?????
+-Ordenar todos los métodos CRUD en una clase!!!!
+-Ver que pasa al confirmar usuario el messageBox.Show de usuario que muestra cosas vacias (REVISAR CODIGO DE ESE METODO)!!!!!
 
--Posibilidad de registrar  numero de telefono, un estado de cuenta detallado y un sistema rápido de retirada de efectivo (20,50, 100 € etc)
+
+-Ver transferencias no me muestra bien todas las ultimas 5 transferencias. Ver que pasa?????
+-Mirar ultimo método crud de EF que no esta en la clase correspondiente
+
+
+
+
+
+CAJERO ELECTRONICO V2.0
+------------------------------------------------------------------------------------------------------------------------------------------------------
+-Posibilidad de registrar numero de telefono, un estado de cuenta detallado y un sistema rápido de retirada de efectivo (20,50, 100 € etc)

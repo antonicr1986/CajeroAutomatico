@@ -22,19 +22,31 @@ namespace CajeroAutomatico
         private int CuentaContador;
         private string[] CuentaTransferencias;
 
+        private FormCajero FormCajero;
         private Retiro Retiro;
         private readonly int maxRetirar = 1000;
         private readonly int numMaxRetiros = 10;
         private readonly int cantidadMaxRetiradaHoy = 3000;
 
-        public FormRetirar(double cuentaSaldo, string cuentaIdentificacion,Retiro retiro, string [] cuentaTransferencias, int cuentaContador)
+        public FormRetirar(FormCajero formCajero, double cuentaSaldo, string cuentaIdentificacion,Retiro retiro, string [] cuentaTransferencias, int cuentaContador)
         {
             InitializeComponent();
+            FormCajero = formCajero;
+
             CuentaSaldo = cuentaSaldo;
             CuentaIdentificacion = cuentaIdentificacion;
             Retiro = retiro;
             CuentaTransferencias = cuentaTransferencias;
             CuentaContador = cuentaContador;
+
+            //TODELETE
+            string mensaje = "";
+            for (int i = 0; i < cuentaTransferencias.Length; i++)
+            {
+                mensaje += cuentaTransferencias[i] + "\n";
+            }
+            MessageBox.Show(mensaje);
+            
         }
 
         private void ButtonConfirmarRetiro_Click(object sender, EventArgs e)
@@ -83,7 +95,7 @@ namespace CajeroAutomatico
 
             if (Retiro.RetirosHoyNum >= numMaxRetiros)
             {
-                MessageBox.Show($"Has superado el maximo de retiros de hoy: {numMaxRetiros} €");
+                MessageBox.Show($"Has superado el maximo de retiros de hoy: {numMaxRetiros}");
                 return;
             }
                 
@@ -96,6 +108,7 @@ namespace CajeroAutomatico
                 MessageBox.Show($"La cantidad retirada ha sido de {cantidadRetirar} € y el saldo total de la cuenta es de { CuentaSaldo } €");
                 CuentaTransferencias[CuentaContador] = $"Retiro: {cantidadRetirar} €";
                 CuentaContador++;
+                FormCajero.CuentaContador = CuentaContador;
             }
             else
             {

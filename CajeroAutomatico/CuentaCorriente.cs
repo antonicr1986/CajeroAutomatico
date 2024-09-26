@@ -8,12 +8,12 @@ namespace CajeroAutomatico
 {
     public class CuentaCorriente
     {
-        public double Saldo { get; set; }
-        public long NumCuenta { get; set; }
-        public string Identificacion { get; set; }
-        public int PIN { get; set; }
-        public String[] Transferencias { get; set; }
-        public int Contador { get; set; }
+        private double Saldo { get; set; }
+        private long NumCuenta { get; set; }
+        private string Identificacion { get; set; }
+        private int PIN { get; set; }
+        private String[] Transferencias { get; set; }
+        private int Contador { get; set; }
 
         public CuentaCorriente(double saldo, long numCuenta,string identificacion, int pin)
         {

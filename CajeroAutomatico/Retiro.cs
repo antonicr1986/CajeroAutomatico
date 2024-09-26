@@ -8,10 +8,10 @@ namespace CajeroAutomatico
 {
     public class Retiro
     {
-        public DateTime Fecha { get; set; }
-        public double ValorRetiro { get; set; }
+        public DateTime Fecha { get; private set; }
+        public double ValorRetiro { get; private set; }
         public int RetirosHoyNum { get; set; }
-        public double RetirosHoyEuros { get; set; }
+        public double RetirosHoyEuros { get;set; }
 
         public Retiro()
         {

@@ -43,6 +43,7 @@ namespace CajeroAutomatico
             }
         }
 
+        //MÉTODO PARA USAR EN UN FUTURO PROBABLEMENTE
         public void ConsultarCuentaCorriente(string CuentaIdentificacion)
         {
             try
@@ -178,6 +179,7 @@ namespace CajeroAutomatico
 
         public void CambioPin(string nuevoPin, string IdentificacionUsuario)
         {
+            bool pinActualizadoCuentasClientes = false;
             try
             {
                 using (var context = new DBonlineEF())
@@ -189,7 +191,7 @@ namespace CajeroAutomatico
                     {
                         cuentaCliente.Pin = int.Parse(nuevoPin);
                         context.SaveChanges();
-                        MessageBox.Show("PIN actualizado en Cajero_CuentasClientes.");
+                        pinActualizadoCuentasClientes = true;
                     }
                     else
                     {
@@ -199,11 +201,10 @@ namespace CajeroAutomatico
                     // Actualiza el PIN en Cajero_CuentaCorriente
                     var cuentaCorriente = context.Cajero_CuentaCorriente
                                                  .FirstOrDefault(c => c.identificacion == IdentificacionUsuario);
-                    if (cuentaCorriente != null)
+                    if (cuentaCorriente != null && pinActualizadoCuentasClientes)
                     {
                         cuentaCorriente.pin = int.Parse(nuevoPin);
                         context.SaveChanges();
-                        MessageBox.Show("PIN actualizado en Cajero_CuentaCorriente.");
                         MessageBox.Show("El nuevo PIN es: " + nuevoPin);
                     }
                     else

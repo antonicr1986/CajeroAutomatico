@@ -12,6 +12,7 @@ namespace CajeroAutomatico
 {
     public partial class FormIngresar : Form
     {
+        FormCajero FormCajero;
         BdDML bdDMl = new BdDML();
 
         private double CuentaSaldo;
@@ -22,9 +23,10 @@ namespace CajeroAutomatico
         private int CuentaContador;
         private string[] CuentaTransferencias;
 
-        public FormIngresar(double cuentaSaldo, long cuentaNumCuenta, string cuentaUsuario, int cuentaPin, string cuentaIdentificacion, int cuentaContador, string[] cuentaTrasnferencias)
+        public FormIngresar(FormCajero formCajero, double cuentaSaldo, long cuentaNumCuenta, string cuentaUsuario, int cuentaPin, string cuentaIdentificacion, int cuentaContador, string[] cuentaTrasnferencias)
         {
             InitializeComponent();
+            FormCajero = formCajero;
 
             CuentaSaldo = cuentaSaldo;
             NumCuenta = cuentaNumCuenta;
@@ -33,6 +35,14 @@ namespace CajeroAutomatico
             CuentaIdentificacion = cuentaIdentificacion;
             CuentaContador = cuentaContador;
             CuentaTransferencias = cuentaTrasnferencias;
+
+            //TODELETE
+            string mensaje = "";
+            for (int i = 0; i < cuentaTrasnferencias.Length; i++)
+            {
+                mensaje += cuentaTrasnferencias[i] + "\n";
+            }
+            MessageBox.Show(mensaje);
         }
 
         private void ButtonConfirmar_Click(object sender, EventArgs e)
@@ -52,6 +62,7 @@ namespace CajeroAutomatico
                 MessageBox.Show($"La cantidad ingresada ha sido de {cantidadIngresar} € y el saldo total de la cuenta es de {CuentaSaldo} €");
                 CuentaTransferencias[CuentaContador] = $"Ingreso: {cantidadIngresar} €";
                 CuentaContador++;
+                FormCajero.CuentaContador = CuentaContador;
             }
             else
             {
