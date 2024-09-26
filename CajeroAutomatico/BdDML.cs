@@ -12,6 +12,15 @@ namespace CajeroAutomatico
 {
     public class BdDML
     {
+        private const string MensajeCuentaNoEncontrada = "No se encontró la cuenta.";
+        private const string MensajeUsuarioIncorrecto = "El número de identificación o el PIN son incorrectos";
+        private const string MensajeErrorCuentaIdNoHallada = "No se encontró la cuenta con la identificación proporcionada.";
+        private const string MensajeErrorGeneral = "Error: ";
+        private const string MensajeErrorCCNoHallada = "No se encontró la cuenta corriente.";
+        private const string MensajeErrorActualizarBD = "Error al actualizar la base de datos: ";
+
+
+
         public static void ComprobarCuentaUsuarioBD(int pin)
         {
             try
@@ -33,13 +42,13 @@ namespace CajeroAutomatico
                     }
                     else
                     {
-                        MessageBox.Show("No se encontró la cuenta.");
+                        MessageBox.Show(MensajeCuentaNoEncontrada);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(MensajeErrorGeneral + ex.Message);
             }
         }
 
@@ -70,13 +79,36 @@ namespace CajeroAutomatico
                     }
                     else
                     {
-                        MessageBox.Show("No se encontró la cuenta.");
+                        MessageBox.Show(MensajeCuentaNoEncontrada);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(MensajeErrorGeneral + ex.Message);
+            }
+        }
+
+        public static void VerificarUsuario(string numeroIdentificacionIngresado, int pinIngresado, FormLogin formLogin, Retiro retiro, string[]UltimasTransferencias, int CuentaContador)
+        {
+            using (var context = new DBonlineEF())
+            {
+                var cuentaCliente = context.Cajero_CuentasClientes
+                                           .FirstOrDefault(c => c.Identificacion == numeroIdentificacionIngresado && c.Pin == pinIngresado);
+
+                if (cuentaCliente != null)
+                {
+                    formLogin.Hide();
+
+                    ComprobarCuentaUsuarioBD(pinIngresado);
+
+                    FormCajero cajero1 = new FormCajero(numeroIdentificacionIngresado, retiro, UltimasTransferencias, CuentaContador);
+                    cajero1.Show();
+                }
+                else
+                {
+                    MessageBox.Show(MensajeUsuarioIncorrecto);
+                }
             }
         }
 
@@ -97,7 +129,7 @@ namespace CajeroAutomatico
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(MensajeErrorGeneral + ex.Message);
             }
             return 0f;
         }
@@ -118,7 +150,7 @@ namespace CajeroAutomatico
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(MensajeErrorGeneral + ex.Message);
             }
             return 0;
         }
@@ -135,18 +167,17 @@ namespace CajeroAutomatico
                     if (cuenta != null)
                     {
                         cuenta.saldo -= cantidad;
-
                         context.SaveChanges();
                     }
                     else
                     {
-                        MessageBox.Show("No se encontró la cuenta con la identificación proporcionada.");
+                        MessageBox.Show(MensajeErrorCuentaIdNoHallada);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(MensajeErrorGeneral + ex.Message);
             }
         }
 
@@ -167,13 +198,13 @@ namespace CajeroAutomatico
                     }
                     else
                     {
-                        MessageBox.Show("No se encontró la cuenta con la identificación proporcionada.");
+                        MessageBox.Show(MensajeErrorCuentaIdNoHallada);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(MensajeErrorGeneral + ex.Message);
             }
         }
 
@@ -195,7 +226,7 @@ namespace CajeroAutomatico
                     }
                     else
                     {
-                        MessageBox.Show("No se encontró la cuenta del cliente.");
+                        MessageBox.Show(MensajeCuentaNoEncontrada);
                     }
 
                     // Actualiza el PIN en Cajero_CuentaCorriente
@@ -209,13 +240,13 @@ namespace CajeroAutomatico
                     }
                     else
                     {
-                        MessageBox.Show("No se encontró la cuenta corriente.");
+                        MessageBox.Show(MensajeErrorCCNoHallada);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al actualizar la base de datos: " + ex.Message);
+                MessageBox.Show(MensajeErrorActualizarBD + ex.Message);
             }
         }      
     }

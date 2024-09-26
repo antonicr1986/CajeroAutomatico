@@ -14,10 +14,17 @@ namespace CajeroAutomatico
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            FormLogin formLogin2 = new FormLogin();      
-            Application.Run(formLogin2);
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                FormLogin formLogin = new FormLogin();
+                Application.Run(formLogin);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Se ha producido un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }

@@ -14,6 +14,9 @@ namespace CajeroAutomatico
 {
     public partial class FormCajero : Form
     {
+        private const string MensajeErrorGeneral = "Error: ";
+        private const string MensajeErrorSinTransferencias = "No hay ninguna transferencia registrada en esta cuenta";
+
         BdDML bdDMl = new BdDML();
 
         private float CuentaSaldo;
@@ -93,11 +96,11 @@ namespace CajeroAutomatico
                     $"{Transferencias[2]}\n{Transferencias[3]}\n{Transferencias[4]}");
                 }
                 else
-                    MessageBox.Show("No hay ninguna transferencia registrada en esta cuenta");
+                    MessageBox.Show(MensajeErrorSinTransferencias);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Excepcion: " + ex);
+                MessageBox.Show(MensajeErrorGeneral + ex);
             }
         }
 

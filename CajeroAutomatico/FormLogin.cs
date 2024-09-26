@@ -14,8 +14,16 @@ namespace CajeroAutomatico
 {
     public partial class FormLogin : Form
     {
+        private const string MensajeErrorRellenaNumTarjYPin = "Rellena el número de tarjeta y el PIN";
+        private const string MensajeErrorPin = "El PIN debe ser un número válido";
+        private const string MensajeUsuarioIncorrecto = "El número de identificación o el PIN son incorrectos";
+        private const string MensajeErrorFormato = "El número de tarjeta o el PIN tienen un formato incorrecto: ";
+        private const string MensajeErrorGeneral = "Se produjo un error: ";
+        private const string MensajeErrorRellenaTarjetaYPin = "Rellena el número de tarjeta y el PIN";
+        private const string MensajeErrorPinFormatoNoValido = "El PIN debe ser un número válido";
+
         private Usuario Usuario {get;set;}
-        private string[] CuentaTransferencias = new string[5];
+        private string[] UltimasTransferencias = new string[5];
         private int CuentaContador = 0;
 
         private Retiro Retiro { get; set; }
@@ -29,7 +37,6 @@ namespace CajeroAutomatico
         public FormLogin(Usuario usuario)
         {
             InitializeComponent();
-
             this.Retiro = new Retiro();
             this.Usuario = usuario;
         }
@@ -46,56 +53,42 @@ namespace CajeroAutomatico
         {
             try
             {
-                if (string.IsNullOrEmpty(textBoxIdentificacion.Text) || string.IsNullOrEmpty(textBoxPIN.Text))
-                {
-                    MessageBox.Show("Rellena el numero de tarjeta y el PIN");
-                    return;
-                }
-
                 string numeroIdentificacionIngresado = textBoxIdentificacion.Text;
                 int pinIngresado;
-                if (!int.TryParse(textBoxPIN.Text, out pinIngresado))
-                {
-                    MessageBox.Show("El PIN debe ser un número válido");
-                    return;
-                }
 
-                // *** A2: Verificar usuario en la base de datos usando Entity Framework
-                using (var context = new DBonlineEF())
-                {
-                    // Verificar si existe el usuario con la identificación y PIN ingresados
-                    var cuentaCliente = context.Cajero_CuentasClientes
-                                               .FirstOrDefault(c => c.Identificacion == numeroIdentificacionIngresado && c.Pin == pinIngresado);
+                IsEntradaValida(out pinIngresado);
 
-                    if (cuentaCliente != null)
-                    {
-                        // Usuario y PIN son correctos
-                        this.Hide();
-
-                        // Cargar la cuenta corriente usando el PIN
-                        BdDML.ComprobarCuentaUsuarioBD(pinIngresado);
-
-                        /* FormCajero cajero1 = new FormCajero(Usuario, cuenta, Retiro); */
-                        FormCajero cajero1 = new FormCajero(numeroIdentificacionIngresado, Retiro, CuentaTransferencias, CuentaContador);
-                        cajero1.Show();
-                    }
-                    else
-                    {
-                        // Usuario o PIN incorrectos
-                        MessageBox.Show("El número de identificación o el PIN son incorrectos");
-                    }
-                }
+                BdDML.VerificarUsuario(numeroIdentificacionIngresado, pinIngresado, this, Retiro, UltimasTransferencias, CuentaContador);
             }
             catch (FormatException ex)
             {
-                MessageBox.Show("El numero de tarjeta o el PIN tienen un formato incorrecto: " + ex.Message);
+                MessageBox.Show(MensajeErrorFormato + ex.Message);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Se produjo un error: " + ex.Message);
+                MessageBox.Show(MensajeErrorGeneral + ex.Message);
             }
         }
-        
+
+        private bool IsEntradaValida(out int pinIngresado)
+        {
+            pinIngresado = 0;
+
+            if (string.IsNullOrEmpty(textBoxIdentificacion.Text) || string.IsNullOrEmpty(textBoxPIN.Text))
+            {
+                MessageBox.Show(MensajeErrorRellenaTarjetaYPin);
+                return false;
+            }
+
+            if (!int.TryParse(textBoxPIN.Text, out pinIngresado))
+            {
+                MessageBox.Show(MensajeErrorPinFormatoNoValido);
+                return false;
+            }
+
+            return true;
+        }
+
 
         private void TextBoxPIN_KeyPress(object sender, KeyPressEventArgs e)
         {
