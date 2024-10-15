@@ -19,13 +19,13 @@ namespace CajeroAutomatico
 
         BdDML bdDMl = new BdDML();
 
-        private float CuentaSaldo;
-        private long CuentaNumCuenta;
-        private string CuentaUsuario;
-        private int CuentaPin;
-        private string CuentaIdentificacion;
+        private float cuentaSaldo;
+        private long cuentaNumCuenta;
+        private string cuentaUsuario;
+        private int cuentaPin;
+        private string cuentaIdentificacion;
         public int CuentaContador { get; set;}
-        private string[] Transferencias = new string[5];
+        private string[] transferencias = new string[5];
 
         private Retiro Retiro;
 
@@ -33,18 +33,10 @@ namespace CajeroAutomatico
         {
             InitializeComponent();
 
-            CuentaIdentificacion = identificacion;
+            cuentaIdentificacion = identificacion;
             Retiro = retiro;
-            Transferencias = cuentaTransferencias;
+            transferencias = cuentaTransferencias;
             CuentaContador = cuentaContador;
-
-            //TODELETE
-            string mensaje = "";
-            for (int i = 0; i < cuentaTransferencias.Length; i++)
-            {
-                mensaje += cuentaTransferencias[i] + "\n";
-            }
-            MessageBox.Show(mensaje);
         }
 
         private void FormCajero_Load(object sender, EventArgs e)
@@ -53,28 +45,28 @@ namespace CajeroAutomatico
 
         private void ButtonConsultaSaldo_Click(object sender, EventArgs e)
         {
-            CuentaSaldo = bdDMl.ConsultaSaldo(CuentaIdentificacion);
-            MessageBox.Show($"El saldo total de su cuenta es: {CuentaSaldo} €");
+            cuentaSaldo = bdDMl.ConsultaSaldo(cuentaIdentificacion);
+            MessageBox.Show($"El saldo total de su cuenta es: {cuentaSaldo} €");
         }
 
         private void ButtonRetirarSaldo_Click(object sender, EventArgs e)
         {
-            CuentaSaldo = bdDMl.ConsultaSaldo(CuentaIdentificacion);
-            FormRetirar retirar = new FormRetirar(this,CuentaSaldo, CuentaIdentificacion, Retiro, Transferencias, CuentaContador);
+            cuentaSaldo = bdDMl.ConsultaSaldo(cuentaIdentificacion);
+            FormRetirar retirar = new FormRetirar(this,cuentaSaldo, cuentaIdentificacion, Retiro, transferencias, CuentaContador);
             retirar.ShowDialog();
         }
 
         private void ButtonIngresarSaldo_Click(object sender, EventArgs e)
         {
-            CuentaSaldo = bdDMl.ConsultaSaldo(CuentaIdentificacion);
-            FormIngresar ingresar = new FormIngresar(this,CuentaSaldo, CuentaNumCuenta, CuentaUsuario, CuentaPin, CuentaIdentificacion, CuentaContador, Transferencias);
+            cuentaSaldo = bdDMl.ConsultaSaldo(cuentaIdentificacion);
+            FormIngresar ingresar = new FormIngresar(this,cuentaSaldo, cuentaNumCuenta, cuentaUsuario, cuentaPin, cuentaIdentificacion, CuentaContador, transferencias);;
             ingresar.ShowDialog();
         }
 
         private void ButtonVerNumCuenta_Click(object sender, EventArgs e)
         {
-            CuentaNumCuenta = bdDMl.ConsultaNumCuenta(CuentaIdentificacion);
-            MessageBox.Show("El numero de cuenta es " + CuentaNumCuenta);
+            cuentaNumCuenta = bdDMl.ConsultaNumCuenta(cuentaIdentificacion);
+            MessageBox.Show("El numero de cuenta es " + cuentaNumCuenta);
         }
 
         private void FormCajero_FormClosing(object sender, FormClosingEventArgs e)
@@ -89,11 +81,11 @@ namespace CajeroAutomatico
         {//TODO Comprobar porque no me carga bien las 5 transferencias
             try
             {
-                if (!string.IsNullOrWhiteSpace(Transferencias[0]))
+                if (!string.IsNullOrWhiteSpace(transferencias[0]))
 
                 {
-                    MessageBox.Show($"Las ultimas transferencias son:\n{Transferencias[0]}\n{Transferencias[1]}\n" +
-                    $"{Transferencias[2]}\n{Transferencias[3]}\n{Transferencias[4]}");
+                    MessageBox.Show($"Las ultimas transferencias son:\n{transferencias[0]}\n{transferencias[1]}\n" +
+                    $"{transferencias[2]}\n{transferencias[3]}\n{transferencias[4]}");
                 }
                 else
                     MessageBox.Show(MensajeErrorSinTransferencias);
@@ -113,7 +105,7 @@ namespace CajeroAutomatico
 
         private void buttonCambiarPIN_Click(object sender, EventArgs e)
         {
-            FormCambioPIN formPIN = new FormCambioPIN(CuentaIdentificacion);
+            FormCambioPIN formPIN = new FormCambioPIN(cuentaIdentificacion);
             formPIN.ShowDialog();
         }
     }

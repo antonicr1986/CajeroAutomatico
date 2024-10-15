@@ -15,34 +15,27 @@ namespace CajeroAutomatico
         FormCajero FormCajero;
         BdDML bdDMl = new BdDML();
 
-        private double CuentaSaldo;
-        private long NumCuenta;
-        private string CuentaUsuario;
-        private int CuentaPin;
-        private string CuentaIdentificacion;
-        private int CuentaContador;
-        private string[] CuentaTransferencias;
+        private double cuentaSaldo;
+        private long numCuenta;
+        private string cuentaUsuario;
+        private int cuentaPin;
+        private string cuentaIdentificacion;
+        private int cuentaContador;
+        private string[] cuentaTransferencias;
 
         public FormIngresar(FormCajero formCajero, double cuentaSaldo, long cuentaNumCuenta, string cuentaUsuario, int cuentaPin, string cuentaIdentificacion, int cuentaContador, string[] cuentaTrasnferencias)
         {
             InitializeComponent();
             FormCajero = formCajero;
 
-            CuentaSaldo = cuentaSaldo;
-            NumCuenta = cuentaNumCuenta;
-            CuentaUsuario = cuentaUsuario;
-            CuentaPin = cuentaPin;
-            CuentaIdentificacion = cuentaIdentificacion;
-            CuentaContador = cuentaContador;
-            CuentaTransferencias = cuentaTrasnferencias;
+            this.cuentaSaldo = cuentaSaldo;
+            numCuenta = cuentaNumCuenta;
+            this.cuentaUsuario = cuentaUsuario;
+            this.cuentaPin = cuentaPin;
+            this.cuentaIdentificacion = cuentaIdentificacion;
+            this.cuentaContador = cuentaContador;
+            cuentaTransferencias = cuentaTrasnferencias;
 
-            //TODELETE
-            string mensaje = "";
-            for (int i = 0; i < cuentaTrasnferencias.Length; i++)
-            {
-                mensaje += cuentaTrasnferencias[i] + "\n";
-            }
-            MessageBox.Show(mensaje);
         }
 
         private void ButtonConfirmar_Click(object sender, EventArgs e)
@@ -55,18 +48,18 @@ namespace CajeroAutomatico
                 MessageBox.Show($"La cantidad ingresada no puede ser de 0 €");
             }
 
-            else if (CuentaContador < CuentaTransferencias.Length)
+            else if (cuentaContador < cuentaTransferencias.Length)
             {
-                bdDMl.IngresarSaldo(cantidadIngresar, CuentaIdentificacion);
-                CuentaSaldo = bdDMl.ConsultaSaldo(CuentaIdentificacion);
-                MessageBox.Show($"La cantidad ingresada ha sido de {cantidadIngresar} € y el saldo total de la cuenta es de {CuentaSaldo} €");
-                CuentaTransferencias[CuentaContador] = $"Ingreso: {cantidadIngresar} €";
-                CuentaContador++;
-                FormCajero.CuentaContador = CuentaContador;
+                bdDMl.IngresarSaldo(cantidadIngresar, cuentaIdentificacion);
+                cuentaSaldo = bdDMl.ConsultaSaldo(cuentaIdentificacion);
+                MessageBox.Show($"La cantidad ingresada ha sido de {cantidadIngresar} € y el saldo total de la cuenta es de {cuentaSaldo} €");
+                cuentaTransferencias[cuentaContador] = $"Ingreso: {cantidadIngresar} €";
+                cuentaContador++;
+                FormCajero.CuentaContador = cuentaContador;
             }
             else
             {
-                CuentaContador = 0;
+                cuentaContador = 0;
                 this.ButtonConfirmar_Click(sender,e);
             }
         }

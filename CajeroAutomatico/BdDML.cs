@@ -34,8 +34,8 @@ namespace CajeroAutomatico
                     if (cuentaCorriente != null)
                     {
                         // Aquí ya tienes los datos en la propiedad de cuentaCorriente
-                        MessageBox.Show("Coprobando cuentacorriente" +
-                            "\nSaldo: " + cuentaCorriente.saldo +
+                        MessageBox.Show("Comprobando cuenta corriente" +
+                            "\nSaldo: " + cuentaCorriente.saldo + " €"+
                             "\nIdentificación usuario: " + cuentaCorriente.identificacion +
                             "\nPIN: " + cuentaCorriente.pin +
                             "\nNumCuenta: " + cuentaCorriente.numCuenta);
@@ -103,6 +103,7 @@ namespace CajeroAutomatico
                     ComprobarCuentaUsuarioBD(pinIngresado);
 
                     FormCajero cajero1 = new FormCajero(numeroIdentificacionIngresado, retiro, UltimasTransferencias, CuentaContador);
+
                     cajero1.Show();
                 }
                 else

@@ -8,20 +8,20 @@ namespace CajeroAutomatico
 {
     public class CuentaCorriente
     {
-        private double Saldo { get; set; }
-        private long NumCuenta { get; set; }
-        private string Identificacion { get; set; }
-        private int PIN { get; set; }
-        private String[] Transferencias { get; set; }
-        private int Contador { get; set; }
+        private double saldo;
+        private long numCuenta;
+        private string identificacion;
+        private int pin;
+        private String[] transferencias;
+        private int contador; //?Borrar??
 
         public CuentaCorriente(double saldo, long numCuenta,string identificacion, int pin)
         {
-            Saldo = saldo;
-            NumCuenta = numCuenta;
-            Identificacion = identificacion;
-            PIN = pin;
-            Transferencias = new string[5];
+            this.saldo = saldo;
+            this.numCuenta = numCuenta;
+            this.identificacion = identificacion;
+            this.pin = pin;
+            transferencias = new string[5];
         }
 
         public CuentaCorriente()
@@ -30,12 +30,12 @@ namespace CajeroAutomatico
 
         public double ConsultarSaldo()
         {
-            return Saldo;
+            return saldo;
         }
 
         public long ConsultarNumCuenta()
         {
-            return NumCuenta;
+            return numCuenta;
         }
     }
 }

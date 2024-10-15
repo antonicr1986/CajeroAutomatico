@@ -23,8 +23,8 @@ namespace CajeroAutomatico
         private const string MensajeErrorPinFormatoNoValido = "El PIN debe ser un número válido";
 
         private Usuario Usuario {get;set;}
-        private string[] UltimasTransferencias = new string[5];
-        private int CuentaContador = 0;
+        private string[] ultimasTransferencias = new string[5];
+        private int cuentaContador = 0;
 
         private Retiro Retiro { get; set; }
 
@@ -58,7 +58,7 @@ namespace CajeroAutomatico
 
                 IsEntradaValida(out pinIngresado);
 
-                BdDML.VerificarUsuario(numeroIdentificacionIngresado, pinIngresado, this, Retiro, UltimasTransferencias, CuentaContador);
+                BdDML.VerificarUsuario(numeroIdentificacionIngresado, pinIngresado, this, Retiro, ultimasTransferencias, cuentaContador);
             }
             catch (FormatException ex)
             {

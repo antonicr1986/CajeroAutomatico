@@ -14,14 +14,14 @@ namespace CajeroAutomatico
 {
     public partial class FormCambioPIN : Form
     { 
-        public string IdentificacionUsuario;
+        public string identificacionUsuario;
 
         BdDML bdDMl = new BdDML();
 
         public FormCambioPIN(string identificacion)
         {
             InitializeComponent();
-            IdentificacionUsuario = identificacion;
+            identificacionUsuario = identificacion;
         }
 
         private void ButtonConfirmarNuevoPIN_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace CajeroAutomatico
 
             nuevoPin = textBoxNuevoPIN.Text;
 
-            bdDMl.CambioPin(nuevoPin, IdentificacionUsuario);
+            bdDMl.CambioPin(nuevoPin, identificacionUsuario);
            
         }
 
