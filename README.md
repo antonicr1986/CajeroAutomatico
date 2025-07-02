@@ -26,12 +26,18 @@ Permite a los usuarios iniciar sesión, consultar su saldo, realizar depósitos,
 ## INTERFAZ GRÁFICO DE LA APLICACIÓN
 
 LOGIN
+
+
 ![Ventana login](screenshots/estructuraProyecto.jpg)
 
 VENTANA PRINCIPAL DE LA APLICACIÓN
+
+
 ![Ventana principal](screenshots/cajero.jpg)
 
 OTRAS VENTANAS
+
+
 ![Retirar saldo](screenshots/retirar.jpg)
 
 ![Ingresar saldo](screenshots/ingresar.jpg)
