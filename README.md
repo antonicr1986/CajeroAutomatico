@@ -28,7 +28,7 @@ Permite a los usuarios iniciar sesión, consultar su saldo, realizar depósitos,
 LOGIN
 
 
-![Ventana login](screenshots/estructuraProyecto.jpg)
+![Ventana login](screenshots/login.jpg)
 
 VENTANA PRINCIPAL DE LA APLICACIÓN
 
