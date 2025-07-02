@@ -3,6 +3,9 @@
   "WorkspaceRootPath": "C:\\Users\\anton\\OneDrive\\Proyectos GIthub\\CajeroAutomatico\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|CajeroAutomatico||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|c:\\users\\anton\\onedrive\\proyectos github\\cajeroautomatico\\cajeroautomatico\\formretirar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|solutionrelative:cajeroautomatico\\formretirar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -29,6 +32,9 @@
     {
       "AbsoluteMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|C:\\Users\\anton\\OneDrive\\Proyectos GIthub\\CajeroAutomatico\\cajeroautomatico\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|solutionrelative:cajeroautomatico\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E066754-FB73-476D-93DF-A7350A4B4017}|CajeroAutomatico\\CajeroAutomatico.csproj|c:\\users\\anton\\onedrive\\proyectos github\\cajeroautomatico\\cajeroautomatico\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,11 +44,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 929,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "CajeroAutomatico",
+              "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Proyectos GIthub\\CajeroAutomatico\\CajeroAutomatico\\CajeroAutomatico.csproj",
+              "RelativeDocumentMoniker": "CajeroAutomatico\\CajeroAutomatico.csproj",
+              "ToolTip": "C:\\Users\\anton\\OneDrive\\Proyectos GIthub\\CajeroAutomatico\\CajeroAutomatico\\CajeroAutomatico.csproj",
+              "RelativeToolTip": "CajeroAutomatico\\CajeroAutomatico.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-07-02T21:14:19.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "FormLogin.cs",
               "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Proyectos GIthub\\CajeroAutomatico\\CajeroAutomatico\\FormLogin.cs",
               "RelativeDocumentMoniker": "CajeroAutomatico\\FormLogin.cs",
@@ -54,7 +72,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "FormCajero.cs",
               "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Proyectos GIthub\\CajeroAutomatico\\CajeroAutomatico\\FormCajero.cs",
               "RelativeDocumentMoniker": "CajeroAutomatico\\FormCajero.cs",
@@ -66,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "FormRetirar.cs",
               "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Proyectos GIthub\\CajeroAutomatico\\CajeroAutomatico\\FormRetirar.cs",
               "RelativeDocumentMoniker": "CajeroAutomatico\\FormRetirar.cs",
@@ -79,7 +97,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "FormIngresar.cs",
               "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Proyectos GIthub\\CajeroAutomatico\\CajeroAutomatico\\FormIngresar.cs",
               "RelativeDocumentMoniker": "CajeroAutomatico\\FormIngresar.cs",
@@ -91,7 +109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Retiro.cs",
               "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Proyectos GIthub\\CajeroAutomatico\\CajeroAutomatico\\Retiro.cs",
               "RelativeDocumentMoniker": "CajeroAutomatico\\Retiro.cs",
@@ -103,7 +121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Proyectos GIthub\\CajeroAutomatico\\CajeroAutomatico\\Usuario.cs",
               "RelativeDocumentMoniker": "CajeroAutomatico\\Usuario.cs",
@@ -115,7 +133,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "CuentaCorriente.cs",
               "DocumentMoniker": "C:\\Users\\anton\\OneDrive\\Proyectos GIthub\\CajeroAutomatico\\CajeroAutomatico\\CuentaCorriente.cs",
               "RelativeDocumentMoniker": "CajeroAutomatico\\CuentaCorriente.cs",
