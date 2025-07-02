@@ -59,7 +59,7 @@
             this.lblNuevoPIN.AutoSize = true;
             this.lblNuevoPIN.Location = new System.Drawing.Point(42, 29);
             this.lblNuevoPIN.Name = "lblNuevoPIN";
-            this.lblNuevoPIN.Size = new System.Drawing.Size(122, 13);
+            this.lblNuevoPIN.Size = new System.Drawing.Size(136, 15);
             this.lblNuevoPIN.TabIndex = 2;
             this.lblNuevoPIN.Text = "Introduzca el nuevo PIN";
             // 
@@ -68,7 +68,7 @@
             this.lbl_RepitaNuevoPIN.AutoSize = true;
             this.lbl_RepitaNuevoPIN.Location = new System.Drawing.Point(42, 111);
             this.lbl_RepitaNuevoPIN.Name = "lbl_RepitaNuevoPIN";
-            this.lbl_RepitaNuevoPIN.Size = new System.Drawing.Size(103, 13);
+            this.lbl_RepitaNuevoPIN.Size = new System.Drawing.Size(115, 15);
             this.lbl_RepitaNuevoPIN.TabIndex = 3;
             this.lbl_RepitaNuevoPIN.Text = "Repita el nuevo PIN";
             // 
@@ -87,7 +87,7 @@
             this.checkBoxVerPIN.AutoSize = true;
             this.checkBoxVerPIN.Location = new System.Drawing.Point(214, 68);
             this.checkBoxVerPIN.Name = "checkBoxVerPIN";
-            this.checkBoxVerPIN.Size = new System.Drawing.Size(63, 17);
+            this.checkBoxVerPIN.Size = new System.Drawing.Size(70, 19);
             this.checkBoxVerPIN.TabIndex = 5;
             this.checkBoxVerPIN.Text = "Ver PIN";
             this.checkBoxVerPIN.UseVisualStyleBackColor = true;
@@ -106,7 +106,7 @@
             this.Controls.Add(this.textBoxNuevoPIN);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormCambioPIN";
-            this.Text = "FormCambioPIN";
+            this.Text = "Cambio de PIN";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCambioPIN_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

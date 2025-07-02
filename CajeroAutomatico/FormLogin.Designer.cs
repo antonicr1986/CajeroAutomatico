@@ -42,7 +42,7 @@ namespace CajeroAutomatico
             this.buttonEntrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEntrar.Location = new System.Drawing.Point(106, 132);
             this.buttonEntrar.Name = "buttonEntrar";
-            this.buttonEntrar.Size = new System.Drawing.Size(96, 35);
+            this.buttonEntrar.Size = new System.Drawing.Size(110, 35);
             this.buttonEntrar.TabIndex = 0;
             this.buttonEntrar.Text = "ENTRAR";
             this.buttonEntrar.UseVisualStyleBackColor = true;
@@ -53,7 +53,7 @@ namespace CajeroAutomatico
             this.label_Identificacion.AutoSize = true;
             this.label_Identificacion.Location = new System.Drawing.Point(27, 43);
             this.label_Identificacion.Name = "label_Identificacion";
-            this.label_Identificacion.Size = new System.Drawing.Size(70, 13);
+            this.label_Identificacion.Size = new System.Drawing.Size(79, 15);
             this.label_Identificacion.TabIndex = 1;
             this.label_Identificacion.Text = "Identificacion";
             // 
@@ -62,7 +62,7 @@ namespace CajeroAutomatico
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(30, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(25, 13);
+            this.label2.Size = new System.Drawing.Size(27, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "PIN";
             // 
@@ -89,7 +89,7 @@ namespace CajeroAutomatico
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(308, 194);
+            this.ClientSize = new System.Drawing.Size(370, 194);
             this.Controls.Add(this.textBoxPIN);
             this.Controls.Add(this.textBoxIdentificacion);
             this.Controls.Add(this.label2);
